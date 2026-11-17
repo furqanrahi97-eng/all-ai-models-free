@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALL AI MODELS FREE</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f6fa;color:#172033;font-family:Arial,sans-serif}
+header{background:#111827;color:white;padding:28px 16px;text-align:center}
+header h1{font-size:27px;margin:5px}
+header p{color:#cbd5e1}
+main{max-width:950px;margin:auto;padding:18px}
+input{width:100%;padding:15px;border:1px solid #ddd;border-radius:12px;font-size:16px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+button{padding:10px 15px;border:0;border-radius:20px;background:#e2e8f0;cursor:pointer}
+button.active{background:#172033;color:white}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:white;padding:18px;border-radius:14px;text-decoration:none;color:#172033;border:1px solid #e5e7eb}
+.card b{display:block;font-size:17px;margin-bottom:8px}
+.card small{color:#64748b}
+.card:hover{border-color:#64748b}
+footer{text-align:center;padding:25px;color:#64748b}
+@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header>
+<h1>ALL AI MODELS FREE</h1>
+<p>Your AI World — One Dashboard</p>
+</header>
+<main>
+<input id="search" placeholder="Search AI tools..." oninput="render()">
+<div class="filters" id="filters"></div>
+<div class="grid" id="grid"></div>
+</main>
+<footer>ALL AI MODELS FREE © 2026<br>
+Free plans may have usage limits.</footer>
+<script>
+const tools=[
+["ChatGPT","Chat","https://chatgpt.com/"],
+["Gemini","Chat","https://gemini.google.com/"],
+["Claude","Chat","https://claude.ai/"],
+["Microsoft Copilot","Chat","https://copilot.microsoft.com/"],
+["DeepSeek","Chat","https://chat.deepseek.com/"],
+["Meta AI","Chat","https://www.meta.ai/"],
+["Mistral","Chat","https://chat.mistral.ai/"],
+["Poe","Chat","https://poe.com/"],
+["Perplexity","Research","https://www.perplexity.ai/"],
+["Phind","Research","https://www.phind.com/"],
+["Canva","Image","https://www.canva.com/"],
+["Adobe Firefly","Image","https://firefly.adobe.com/"],
+["Leonardo AI","Image","https://leonardo.ai/"],
+["Ideogram","Image","https://ideogram.ai/"],
+["Kling AI","Video","https://klingai.com/"],
+["PixVerse","Video","https://pixverse.ai/"],
+["Runway","Video","https://runwayml.com/"],
+["Hugging Face","Models","https://huggingface.co/"],
+["GitHub Copilot","Coding","https://github.com/features/copilot"],
+["Replit","Coding","https://replit.com/"],
+["ElevenLabs","Voice","https://elevenlabs.io/"],
+["Suno","Music","https://suno.com/"]
+];
+let category="All";
+const filters=["All","Chat","Research","Image","Video","Coding","Voice","Music","Models"];
+function render(){
+document.getElementById("filters").innerHTML=
+filters.map(x=>`<button class="${category===x?'active':''}" onclick="category='${x}';render()">${x}</button>`).join("");
+let q=document.getElementById("search").value.toLowerCase();
+let list=tools.filter(t=>
+(category==="All"||t[1]===category)&&
+t[0].toLowerCase().includes(q));
+document.getElementById("grid").innerHTML=
+list.map(t=>`<a class="card" href="${t[2]}" target="_blank" rel="noopener noreferrer">
+<b>${t[0]} ↗</b><small>${t[1]} • Open official website</small>
+</a>`).join("")||"No tools found";
+}
+render();
+</script>
+</body>
+</html>
